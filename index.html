@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Big 5 Personality Test</title>
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <link rel="stylesheet" href="carder/css/carder.css"></link>
+    <link rel="stylesheet" href="carder/css/plain.css"></link>
+    <script src="carder/js/jquery-3.5.1.min.js"></script>
+    <script src="carder/js/swing.js"></script>
+    <script src="carder/js/carder.js"></script>
+    <script src="carder/js/dealer.js"></script>
+    <script src="js/ipip.js"></script>
+  </head>
+  <body>
+    <div id="carder"/>
+    <script>
+      let carder, dealer
+      $(document).ready (() => {
+	carder = new Carder ({ iconPrefix: 'carder/img/' })
+	const config = {
+	  carder,
+	  debug: true,
+	  meterIconPrefix: 'meters/',
+	  localStorageKey: 'big5',
+	  meters: [{ name: 'open', min: -5, max: 5 },
+		   { name: 'conscientious', min: -5, max: 5 },
+		   { name: 'extravert', min: -5, max: 5 },
+		   { name: 'agreeable', min: -5, max: 5 },
+		   { name: 'neurotic', min: -5, max: 5 }],
+	  cards,
+	  status: (gs) => `Your personality scores are:<br>Openness: ${gs.open}<br>Conscientiousness: ${gs.conscientious}<br>Extraversion: ${gs.extravert}<br>Agreeableness: ${gs.agreeable}<br>Neuroticism: ${gs.neurotic}`
+	}
+	dealer = new Dealer (config)
+	dealer.dealFirstCard()
+      })
+    </script>
+  </body>
+</html>

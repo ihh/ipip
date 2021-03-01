@@ -1,0 +1,3 @@
+[submodule "carder"]
+	path = carder
+	url = https://github.com/ihh/carder.git
