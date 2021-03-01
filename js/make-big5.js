@@ -12,5 +12,24 @@ big5.forEach ((line) => {
   byTrait[trait][sign].push (text)
 })
 
-console.log(byTrait)
+let traits = Object.keys(byTrait)
 
+let json = { typeLimit: 5,
+             right: { hint: 'Yes' },
+             left: { hint: 'No' },
+             cards: traits.map ((trait) => {
+               return { type: trait,
+                        cards: [makeCards (trait, 1),
+                                makeCards (trait, -1)] }
+             }) }
+
+console.log(JSON.stringify(json,null,2))
+
+function makeCards (trait, sign) {
+  let cards = {
+    reward: {},
+    cards: byTrait[trait][sign]
+  }
+  cards.reward[trait] = sign
+  return cards
+}
